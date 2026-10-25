@@ -1,0 +1,46 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 22,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "windows-vs2026",
+      "displayName": "Windows x64 (Visual Studio 2026)",
+      "generator": "Visual Studio 18 2026",
+      "architecture": {
+        "value": "x64"
+      },
+      "toolset": {
+        "value": "host=x64"
+      }
+    },
+    {
+      "name": "windows-vs2026-eagle-dynamics",
+      "displayName": "Windows x64 (Eagle Dynamics)",
+      "inherits": "windows-vs2026",
+      "cacheVariables": {
+        "CMAKE_INSTALL_PREFIX": "$env{ProgramData}/Eagle Dynamics"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-vs2026-release",
+      "displayName": "Build Windows x64 Release",
+      "configurePreset": "windows-vs2026",
+      "configuration": "Release"
+    },
+    {
+      "name": "windows-vs2026-eagle-dynamics-release-install",
+      "displayName": "Install Windows x64 Release for Eagle Dynamics",
+      "configurePreset": "windows-vs2026-eagle-dynamics",
+      "configuration": "Release",
+      "targets": [
+        "install"
+      ]
+    }
+  ]
+}
